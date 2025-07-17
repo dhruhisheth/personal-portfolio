@@ -3,7 +3,7 @@
 This is my personal portfolio website built using **Vite**, **React**, and **TailwindCSS**, hosted on **Vercel**. It highlights my projects, skills, experience, and resume — all in one place.
 
 ### 🚀 Live Site
-👉 [Visit Portfolio](https://dhruhi-sheth-portfolio.vercel.app/#contact)
+👉 [Visit Portfolio](https://dhruhisheth-portfolio.vercel.app)
 
 ---
 
