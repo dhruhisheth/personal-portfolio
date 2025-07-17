@@ -15,6 +15,11 @@ const skills = [
   { name: "FastAPI", category: "frameworks", summary: "A modern, fast Python web framework for building APIs with automatic docs and type hints." },
   { name: "Tailwind CSS", category: "frameworks", summary: "A utility-first CSS framework for rapidly building custom user interfaces." },
   { name: "NodeJS", category: "frameworks", summary: "A JavaScript runtime for building scalable server-side and networking applications." },
+  { name: "Bootstrap", category: "frameworks", summary: "A popular CSS framework for developing responsive and mobile-first websites." },
+
+  { name: "Supabase", category: "databases", summary: "An open-source backend-as-a-service platform providing a Postgres database, authentication, and more." },
+  { name: "MongoDB", category: "databases", summary: "A NoSQL document database for modern, scalable applications." },
+  { name: "MySQL", category: "databases", summary: "A widely-used open-source relational database management system." },
 
   { name: "TensorFlow", category: "ML", summary: "An open-source platform for machine learning and deep learning developed by Google." },
   { name: "scikit-learn", category: "ML", summary: "A Python library for classical machine learning algorithms and data analysis." },
@@ -28,13 +33,13 @@ const skills = [
   { name: "Docker", category: "tools", summary: "A platform for developing, shipping, and running applications in containers." },
   { name: "Figma", category: "tools", summary: "A collaborative interface design tool for UI/UX design and prototyping." },
   { name: "Postman", category: "tools", summary: "A collaboration platform for API development, testing, and monitoring." },
-  { name: "MongoDB", category: "tools", summary: "A NoSQL document database for modern, scalable applications." },
 ];
 
 const categories = [
   { key: "all", label: "All" },
   { key: "languages", label: "Languages" },
   { key: "frameworks", label: "Frameworks" },
+  { key: "databases", label: "Databases" },
   { key: "ML", label: "ML" },
   { key: "tools", label: "Tools" },
 ];
