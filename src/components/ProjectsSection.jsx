@@ -16,11 +16,20 @@ const projects = [
     description: "An interactive AI-powered fashion stylist built with LangGraph, Groq/OpenAI models, and Tavily web search. Features a FastAPI backend and Streamlit UI for smart, trend-aware outfit suggestions.",
     image: "/projects/project2.png",
     tags: ["LangGraph", "FastAPI", "Streamlit", "Groq", "OpenAI"],
-    demoUrl: "#",
+    demoUrl: "https://langgraph-ai-agent-1.onrender.com",
     githubUrl: "https://github.com/dhruhisheth/langgraph-ai-agent",
   },
   {
     id: 3,
+    title: "MealMate",
+    description: "A powerful, scalable recipe management system with intelligent search capabilities and dietary filtering. Features 8 RESTful endpoints, MongoDB Atlas search, and AWS deployment with sub-200ms response times.",
+    image: "/projects/project10.png",
+    tags: ["Java", "Spring Boot", "MongoDB", "AWS", "REST API"],
+    demoUrl: "http://mealmate-env.eba-bxefbmdv.us-east-1.elasticbeanstalk.com/swagger-ui/index.html",
+    githubUrl: "https://github.com/dhruhisheth/meal-mate",
+  },
+  {
+    id: 4,
     title: "Wheel Detector",
     description: "Real-time wheel detection using YOLOv8 with data splitting, training, and video inference pipeline. Built with Python and Ultralytics for computer vision applications.",
     image: "/projects/project3.png",
@@ -29,7 +38,7 @@ const projects = [
     githubUrl: "https://github.com/dhruhisheth/wheel-detector",
   },
   {
-    id: 4,
+    id: 5,
     title: "Physical Therapy Activity Classification",
     description: "A complete end-to-end machine learning pipeline for classifying physical therapy exercises using time-series sensor data with signal filtering, feature extraction, and model evaluation.",
     image: "/projects/project4.png",
@@ -38,7 +47,7 @@ const projects = [
     githubUrl: "https://github.com/dhruhisheth/physical-therapy-activity-classification",
   },
   {
-    id: 5,
+    id: 6,
     title: "Movie Reviews Sentiment Analysis",
     description: "Lexicon-based sentiment analysis of movie reviews using NLTK, with visualization and heuristic-based classification for natural language processing.",
     image: "/projects/project5.png",
@@ -47,13 +56,22 @@ const projects = [
     githubUrl: "https://github.com/dhruhisheth/movie-reviews-sentiment-analysis",
   },
   {
-    id: 6,
+    id: 7,
     title: "Faculty Office Hours Manager",
     description: "A user-friendly JavaFX desktop application designed to help faculty efficiently schedule and manage office hours using SQLite database with MVC architecture.",
     image: "/projects/project6.png",
     tags: ["JavaFX", "SQLite", "MVC", "Java"],
     demoUrl: "#",
     githubUrl: "https://github.com/dhruhisheth/faculty-s-office-hours-manager",
+  },
+  {
+    id: 8,
+    title: "NYC Airbnb Price Prediction",
+    description: "A comprehensive machine learning project that predicts Airbnb listing prices using property characteristics, host information, and booking details. Features complete ML pipeline with ensemble methods and hyperparameter optimization.",
+    image: "/projects/project11.png",
+    tags: ["Machine Learning", "Python", "Scikit-learn", "Pandas", "Jupyter"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/dhruhisheth/nyc-airbnb-price-prediction",
   },
 ];
 
@@ -74,12 +92,14 @@ export const ProjectsSection = () => {
               key={key}
               className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover flex flex-col h-full"
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-48 overflow-hidden bg-gradient-to-br from-secondary/30 to-secondary/10 flex items-center justify-center relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none"></div>
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110 rounded-sm border-2 border-white/30 shadow-sm"
                 />
+                <div className="absolute inset-0 border border-border/20 rounded-sm pointer-events-none"></div>
               </div>
 
               <div className="p-6 flex flex-col flex-1">
