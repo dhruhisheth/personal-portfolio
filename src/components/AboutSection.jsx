@@ -74,6 +74,20 @@ const aboutData = {
   ],
   leadership: [
     {
+      title: "Technical Workshop Leader",
+      organization: "Girls Who Code, SJSU",
+      location: "San Jose, CA",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/6/6e/San_Jose_State_University_seal.svg",
+      summary: "Lead technical workshops and educational initiatives to empower women in technology.",
+      details: [
+        "Lead weekly coding workshops for 30+ students, teaching Python, JavaScript, and web development fundamentals, resulting in 85% of participants completing their first coding project",
+        "Design and implement curriculum for beginner-friendly programming sessions, including hands-on projects and interactive coding challenges",
+        "Mentor students through their coding journey, providing personalized guidance and support for technical challenges and career development",
+        "Organize and facilitate hackathons and coding competitions, creating opportunities for students to showcase their skills and build confidence in their technical abilities"
+      ],
+      date: "Aug 2025 – Present"
+    },
+    {
       title: "Mentorship Chair",
       organization: "Society of Women Engineers, SJSU",
       location: "San Jose, CA",
@@ -140,7 +154,8 @@ const aboutData = {
       logo: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Cornell_University_seal.svg",
       summary: "Completed ML Foundations e-Certificate, Break Through Tech",
       details: [],
-      date: "May 2025"
+      date: "May 2025",
+      link: "/projects/MachineLearningCertificate.pdf"
     },
     {
       title: "AWS Fundamentals",
