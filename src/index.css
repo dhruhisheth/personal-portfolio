@@ -1,171 +1,127 @@
 @import "tailwindcss";
 
-@theme {
-  --color-border: hsl(var(--border));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
+@custom-variant dark (&:where(.dark, .dark *));
 
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
+/* Palette: warm paper + ink navy. One accent, used sparingly. */
+:root {
+  --bg: #f7f5f0;
+  --surface: #ffffff;
+  --fg: #1b1d22;
+  --muted: #5d6068;
+  --line: #e3e0d8;
+  --accent: #26408b;
+  --accent-soft: #e6eaf5;
+  --on-accent: #ffffff;
+}
 
-  --color-card: hsl(var(--card));
+.dark {
+  --bg: #111317;
+  --surface: #181b21;
+  --fg: #e9e7e2;
+  --muted: #9a9ea8;
+  --line: #2a2e36;
+  --accent: #9db2ff;
+  --accent-soft: #1d2437;
+  --on-accent: #111317;
+}
 
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
-  --animate-fade-in: fade-in 0.7s ease-out forwards;
-  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
-  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
-  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
-  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
-  --animate-meteor: meteor 5s linear infinite;
+@theme inline {
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-foreground: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
 
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  @keyframes pulse-subtle {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.8;
-    }
-  }
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes meteor {
-    0% {
-      transform: rotate(215deg) translateX(0);
-      opacity: 1;
-    }
-    70% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(215deg) translateX(-500px);
-      opacity: 0;
-    }
-  }
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader", Georgia, serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
 }
 
 @layer base {
-  :root {
-    --background: 210 20% 92%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-
-    --primary: 330 89% 70%;
-    --primary-foreground: 210 20% 92%;
-
-    --border: 214 32% 85%;
-  }
-
-  .dark {
-    --background: 0 0% 0%;
-    --foreground: 220 25% 85%;
-
-    --card: 0 0% 0%;
-    --primary: 330 89% 70%;
-    --primary-foreground: 220 25% 85%;
-    --border: 330 89% 70%;
-  }
-
   * {
-    @apply border-border;
+    border-color: var(--line);
   }
 
   html {
-    @apply scroll-smooth;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-300;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: 'Georgia', 'Times New Roman', serif;
+    @apply bg-background text-foreground font-sans antialiased;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 }
 
 @utility container {
   margin-inline: auto;
-  padding-inline: 2rem;
+  padding-inline: 1.25rem;
+  max-width: 68rem;
 
-  @media (width >= 640px) {
-    max-width: 640px;
-  }
   @media (width >= 768px) {
-    max-width: 768px;
-  }
-  @media (width >= 1024px) {
-    max-width: 1024px;
-  }
-  @media (width >= 1280px) {
-    max-width: 1280px;
-  }
-  @media (width >= 1400px) {
-    max-width: 1400px;
+    padding-inline: 2rem;
   }
 }
 
-@utility text-glow {
-  @apply relative;
-  text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+@utility eyebrow {
+  @apply font-mono text-xs uppercase tracking-[0.14em] text-muted;
 }
 
-@utility card-hover {
-  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+@utility btn {
+  @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors;
 }
 
-@utility gradient-border {
-  @apply relative rounded-md;
-  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
-  background-clip: padding-box;
-  border: 1px solid transparent;
+@utility btn-primary {
+  @apply btn bg-accent text-on-accent hover:opacity-90;
 }
 
-@utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
-         transition-all duration-300 hover:shadow-[0_0_10px_rgba(255,182,193,0.5)]
-         hover:scale-105 active:scale-95;
+@utility btn-ghost {
+  @apply btn border border-line text-foreground hover:border-accent hover:text-accent;
 }
 
-@utility star {
-  @apply absolute rounded-full bg-white;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+@utility tag {
+  @apply font-mono text-[11px] rounded-md bg-accent-soft px-2 py-1 text-accent;
 }
 
-@utility meteor {
-  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+@utility link {
+  @apply text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent;
 }
 
-#root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
+/* Gentle entrance, skipped for people who prefer less motion. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-/* Ensure all card/box elements have a border in dark mode */
-@media (prefers-color-scheme: dark) {
-  .bg-card, .border-border, .border, .rounded-lg, .rounded-md, [class*="border-transparent"] {
-    border-width: 1.5px !important;
-    border-style: solid !important;
-    border-color: hsl(var(--primary)) !important;
-    box-sizing: border-box !important;
+.rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
   }
 }

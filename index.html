@@ -2,9 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Dhruhi Sheth · Software, Data & AI Engineer</title>
+    <meta
+      name="description"
+      content="Dhruhi Sheth is a Computer Science student at San José State (May 2027) building data pipelines, AI agents, and full-stack products."
+    />
+    <meta property="og:title" content="Dhruhi Sheth · Software, Data & AI Engineer" />
+    <meta property="og:description" content="Data pipelines, AI agents, and full-stack products. SJSU CS, class of 2027." />
+    <meta property="og:image" content="/profile.jpg" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2326408b'/><text x='16' y='22' font-family='Georgia,serif' font-size='17' fill='white' text-anchor='middle'>DS</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply the saved or system theme before first paint to avoid a flash.
+      try {
+        const saved = localStorage.getItem("theme");
+        const dark = saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+        if (dark) document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

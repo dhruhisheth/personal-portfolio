@@ -1,170 +1,87 @@
-import {
-  Mail,
-  MapPin,
-  Phone,
-  Send
-} from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ArrowUpRight, Send } from "lucide-react";
 import { useState } from "react";
+import { profile } from "@/data/content";
+
+const fieldClass =
+  "w-full rounded-lg border border-line bg-background px-4 py-3 text-[15px] placeholder:text-muted/70 focus:outline-none focus:border-accent transition-colors";
 
 export const ContactSection = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formStatus, setFormStatus] = useState(null);
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setFormStatus(null);
-    const formData = new FormData(e.target);
+    const form = e.currentTarget;
+    setStatus("sending");
     try {
-      const response = await fetch('https://formspree.io/f/myzpyddw', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: formData,
+      const response = await fetch("https://formspree.io/f/myzpyddw", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
       });
-      if (response.ok) {
-        setFormStatus('success');
-        alert("Message sent! Thank you for your message. I'll get back to you soon.");
-        e.target.reset();
-      } else {
-        setFormStatus('error');
-        alert("There was a problem sending your message. Please try again later.");
-      }
-    } catch (error) {
-      setFormStatus('error');
-      alert("There was a problem sending your message. Please try again later.");
+      if (!response.ok) throw new Error(response.statusText);
+      form.reset();
+      setStatus("sent");
+    } catch {
+      setStatus("error");
     }
-    setIsSubmitting(false);
   };
-  
+
   return (
-    <section id="contact" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center pop-heading group hover:scale-105">
-          GET IN <span className="text-primary"> TOUCH</span>
-        </h2>
-        <p className="text-center text-muted-foreground mb-10 text-lg font-medium">
-          Have a project in mind or want to collaborate? Feel free to reach out.
-        </p>
-        <div className="flex flex-col md:flex-row gap-12">
-          {/* Send a Message (left) */}
-          <div className="bg-card p-8 rounded-lg shadow-xs flex-1 order-1 md:order-none">
-            <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-base font-medium mb-2"
-                >
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="Your name..."
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-base font-medium mb-2"
-                >
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="your.email@gmail.com"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-base font-medium mb-2"
-                >
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
-                  placeholder="Hello, I'd like to talk about..."
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2"
-                )}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-                <Send size={16} />
-              </button>
-              {formStatus === 'success' && (
-                <p className="text-green-600 text-sm mt-2">Your message was sent successfully!</p>
-              )}
-              {formStatus === 'error' && (
-                <p className="text-red-600 text-sm mt-2">There was an error sending your message. Please try again later.</p>
-              )}
-            </form>
-          </div>
-          {/* Contact Info (right) */}
-          <div className="bg-card p-8 rounded-lg shadow-xs flex-1 order-2 md:order-none space-y-8 text-left">
-            <h3 className="text-2xl font-semibold mb-6">
-              Contact Information
-            </h3>
-            <div className="space-y-6">
-              <div className="bg-background rounded-md border border-input p-4 flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="text-base font-medium"> Email</h4>
-                  <a
-                    href="mailto:shethdhruhi05@gmail.com"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    shethdhruhi05@gmail.com
-                  </a>
-                </div>
-              </div>
-              <div className="bg-background rounded-md border border-input p-4 flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="text-base font-medium"> Phone</h4>
-                  <a
-                    href="tel:+14088198122"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    +1 (408) 819-8122
-                  </a>
-                </div>
-              </div>
-              <div className="bg-background rounded-md border border-input p-4 flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-medium"> Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    San Jose, CA, USA
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+    <section id="contact" className="py-20 md:py-28 border-t border-line">
+      <div className="container grid gap-12 md:grid-cols-2 md:gap-16">
+        <div>
+          <p className="eyebrow">05 / Contact</p>
+          <h2 className="mt-4 font-serif text-4xl md:text-5xl leading-tight">
+            Let's build something.
+          </h2>
+          <p className="mt-4 text-muted leading-relaxed max-w-md">
+            I'm looking for 2027 new-grad roles in software, data, and AI engineering. The fastest way to reach me is email.
+          </p>
+          <a
+            href={`mailto:${profile.email}`}
+            className="mt-8 inline-block font-serif text-2xl md:text-3xl text-accent underline decoration-accent/30 underline-offset-8 hover:decoration-accent transition-colors break-all"
+          >
+            {profile.email}
+          </a>
+          <ul className="mt-8 space-y-2 text-sm">
+            <li>
+              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-muted hover:text-foreground">
+                LinkedIn <ArrowUpRight size={14} />
+              </a>
+            </li>
+            <li>
+              <a href={profile.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-muted hover:text-foreground">
+                GitHub <ArrowUpRight size={14} />
+              </a>
+            </li>
+            <li>
+              <a href={profile.phoneHref} className="text-muted hover:text-foreground">{profile.phone}</a>
+            </li>
+            <li className="text-muted">{profile.location}</li>
+          </ul>
         </div>
+
+        <form onSubmit={handleSubmit} className="rounded-2xl border border-line bg-surface p-6 md:p-8 space-y-5">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
+            <input id="name" name="name" type="text" required autoComplete="name" className={fieldClass} placeholder="Your name" />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
+            <input id="email" name="email" type="email" required autoComplete="email" className={fieldClass} placeholder="you@company.com" />
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
+            <textarea id="message" name="message" required rows={5} className={`${fieldClass} resize-none`} placeholder="What would you like to talk about?" />
+          </div>
+          <button type="submit" disabled={status === "sending"} className="btn-primary w-full justify-center disabled:opacity-60">
+            {status === "sending" ? "Sending…" : "Send message"} <Send size={15} />
+          </button>
+          <p aria-live="polite" className="text-sm min-h-5">
+            {status === "sent" && <span className="text-emerald-600 dark:text-emerald-400">Thanks, your message is on its way. I'll reply soon.</span>}
+            {status === "error" && <span className="text-red-600 dark:text-red-400">That didn't send. Please email me directly instead.</span>}
+          </p>
+        </form>
       </div>
     </section>
   );

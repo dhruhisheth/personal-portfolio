@@ -16,10 +16,14 @@ This is my personal portfolio website built using **Vite**, **React**, and **Tai
 
 ## 📁 Features
 
-- Clean and responsive design
-- Project showcases with links and images
-- About me and contact sections
+- Clean, responsive design with light and dark themes
+- Experience, projects, skills, education, and contact sections
 - Resume download and social links
+
+## ✏️ Updating content
+
+All copy (experience, projects, skills, honors) lives in `src/data/content.js`.
+To update the downloadable resume, replace `public/Dhruhi_Sheth_Resume.pdf`.
 
 ---
 
