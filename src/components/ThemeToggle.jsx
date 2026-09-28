@@ -20,7 +20,7 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full text-muted hover:text-foreground transition-colors"
+      className="rounded-full p-2 opacity-70 transition-opacity hover:opacity-100"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDark ? <Sun size={18} /> : <Moon size={18} />}

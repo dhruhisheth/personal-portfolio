@@ -18,10 +18,12 @@ export const profile = {
   photo: "/profile.jpg",
 };
 
+export const roles = ["data pipelines", "AI agents", "full-stack apps", "ML models"];
+
 export const stats = [
-  { value: "3", label: "engineering internships" },
-  { value: "3.78", label: "GPA, President's Scholar" },
-  { value: "1", label: "Springer publication" },
+  { value: 3, decimals: 0, label: "engineering internships" },
+  { value: 3.78, decimals: 2, label: "GPA · President's Scholar" },
+  { value: 12000, decimals: 0, suffix: "+", label: "banks integrated at Lucrisma" },
 ];
 
 export const experience = [
@@ -124,6 +126,7 @@ export const publication = {
 export const featuredProjects = [
   {
     title: "Warehouse AI",
+    cover: ["with redis.lock(\"inventory\"):", "    wb = r2.download(\"stock.xlsx\")", "    apply(edit); audit.log(edit)", "    backup(wb); r2.upload(wb)  # ✓ committed"],
     blurb:
       "An AI-assisted inventory system that keeps Excel as the source of truth while making every edit safe and auditable.",
     bullets: [
@@ -136,6 +139,7 @@ export const featuredProjects = [
   },
   {
     title: "LangGraph AI Agent",
+    cover: ["graph = StateGraph(StylistState)", "graph.add_node(\"search\", tavily)", "graph.add_node(\"style\", llm)", "agent.invoke(\"outfit for a rainy gala\")"],
     blurb:
       "A trend-aware AI fashion stylist built as a LangGraph agent with web search.",
     bullets: [
@@ -148,6 +152,7 @@ export const featuredProjects = [
   },
   {
     title: "MealMate",
+    cover: ["GET /api/recipes?diet=vegan", "@GetMapping(\"/recipes\")", "mongo.aggregate(pipeline)", "200 OK · 10,000+ recipes · 99.9% up"],
     blurb:
       "A microservices REST API for recipe search, dietary filters, and meal planning.",
     bullets: [
@@ -160,6 +165,7 @@ export const featuredProjects = [
   },
   {
     title: "FindMyFit.AI",
+    cover: ["audio = whisper.transcribe(mic)", "img = camera.capture()", "reply = llama4.chat(img, audio)", "speak(reply)  # \"Swap the shoes.\""],
     blurb:
       "A multimodal, voice-activated stylist that looks at an outfit photo and talks back.",
     bullets: [

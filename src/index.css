@@ -2,27 +2,44 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Palette: warm paper + ink navy. One accent, used sparingly. */
+/*
+  Palette: warm paper, deep ink navy as the dominant band color,
+  marigold as the single warm highlight.
+*/
 :root {
-  --bg: #f7f5f0;
-  --surface: #ffffff;
-  --fg: #1b1d22;
-  --muted: #5d6068;
-  --line: #e3e0d8;
-  --accent: #26408b;
-  --accent-soft: #e6eaf5;
+  --bg: #f4f1ea;
+  --surface: #fbfaf6;
+  --fg: #141a2e;
+  --muted: #5b6072;
+  --line: #ded9cc;
+  --accent: #1f3a8a;
+  --accent-soft: #e4e8f4;
   --on-accent: #ffffff;
+  --highlight: #e9a23b;
+  --highlight-ink: #9a5d0c;
+
+  /* The navy band (hero, ticker, contact) is dark in both themes. */
+  --ink: #0d1633;
+  --ink-2: #16214a;
+  --ink-fg: #f1ede3;
+  --ink-muted: #a3abc6;
+  --ink-line: rgba(241, 237, 227, 0.14);
 }
 
 .dark {
-  --bg: #111317;
-  --surface: #181b21;
-  --fg: #e9e7e2;
-  --muted: #9a9ea8;
-  --line: #2a2e36;
-  --accent: #9db2ff;
-  --accent-soft: #1d2437;
-  --on-accent: #111317;
+  --bg: #0b1024;
+  --surface: #111836;
+  --fg: #ece8de;
+  --muted: #9aa2bd;
+  --line: #242d52;
+  --accent: #9fb4ff;
+  --accent-soft: #1a2448;
+  --on-accent: #0b1024;
+  --highlight: #f0b44c;
+  --highlight-ink: #f0b44c;
+
+  --ink: #070b1c;
+  --ink-2: #0f1633;
 }
 
 @theme inline {
@@ -34,6 +51,13 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-on-accent: var(--on-accent);
+  --color-highlight: var(--highlight);
+  --color-highlight-ink: var(--highlight-ink);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-fg: var(--ink-fg);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-line: var(--ink-line);
 
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Newsreader", Georgia, serif;
@@ -47,7 +71,7 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
   }
 
   body {
@@ -56,12 +80,12 @@
   }
 
   ::selection {
-    background: var(--accent);
-    color: var(--on-accent);
+    background: var(--highlight);
+    color: #141a2e;
   }
 
   :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--highlight);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -70,7 +94,7 @@
 @utility container {
   margin-inline: auto;
   padding-inline: 1.25rem;
-  max-width: 68rem;
+  max-width: 72rem;
 
   @media (width >= 768px) {
     padding-inline: 2rem;
@@ -78,15 +102,19 @@
 }
 
 @utility eyebrow {
-  @apply font-mono text-xs uppercase tracking-[0.14em] text-muted;
+  @apply font-mono text-xs uppercase tracking-[0.16em] text-muted;
 }
 
 @utility btn {
-  @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors;
+  @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all;
 }
 
 @utility btn-primary {
-  @apply btn bg-accent text-on-accent hover:opacity-90;
+  @apply btn bg-accent text-on-accent hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_var(--accent)];
+}
+
+@utility btn-highlight {
+  @apply btn bg-highlight text-[#141a2e] hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-10px_var(--highlight)];
 }
 
 @utility btn-ghost {
@@ -101,11 +129,31 @@
   @apply text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent;
 }
 
-/* Gentle entrance, skipped for people who prefer less motion. */
+/* Fine film grain over the whole page, for print-like texture. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Blueprint grid used behind the navy bands. */
+.blueprint {
+  background-image:
+    linear-gradient(var(--ink-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ink-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 75%);
+}
+
+/* Entrance on load */
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -114,12 +162,81 @@
 }
 
 .rise {
-  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Reveal on scroll (toggled by useReveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--d, 0ms);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin 24s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+.marquee-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: blink 1s steps(1) infinite;
+}
+
+/* Cursor spotlight on cards; --mx/--my set from pointer position. */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--highlight) 16%, transparent), transparent 60%);
+}
+.spotlight:hover::before {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rise {
+  .rise,
+  .spin-slow,
+  .marquee,
+  .caret {
     animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
   html {
     scroll-behavior: auto;
