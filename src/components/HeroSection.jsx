@@ -162,8 +162,11 @@ const Badge = ({ className }) => (
       <defs>
         <path id="badge-circle" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0" />
       </defs>
-      <text className="font-mono" fontSize="9.2" letterSpacing="2.4" fill="currentColor">
-        <textPath href="#badge-circle">SJSU · COMPUTER SCIENCE · CLASS OF 2027 ·</textPath>
+      {/* textLength = circumference (2π·37 ≈ 232.5) so the text closes the loop exactly */}
+      <text className="font-mono" fontSize="8.4" fill="currentColor">
+        <textPath href="#badge-circle" textLength="231" lengthAdjust="spacing">
+          SJSU · COMPUTER SCIENCE · CLASS OF 2027 ·
+        </textPath>
       </text>
     </svg>
     <span className="absolute inset-0 grid place-items-center font-serif text-2xl italic">’27</span>
