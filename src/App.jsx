@@ -29,10 +29,10 @@ const featured = [
     live: 'https://inventory.dhruvishahitech.com'
   },
   {
-    tag: 'Research · IEEE ETECOM 2026',
-    title: 'Linguistic Heuristics in Sentiment Analysis',
-    line: 'First-author paper with Prof. Maryam Khazaei: 72.40% → 73.72% accuracy on 25,000 IMDb reviews.',
-    tech: ['Python', 'NLTK', 'Statistics'],
+    tag: 'IEEE ETECOM 2026 (Accepted)',
+    title: 'Undergraduate Research, SJSU',
+    line: 'First author of “Evaluating Linguistic Heuristics in Lexicon-Based Movie Review Sentiment Analysis” with Prof. Maryam Khazaei. 4 rule-based classifiers on 25,000 IMDb reviews: 72.40% → 73.72% accuracy (McNemar, p < 0.001).',
+    tech: ['Python', 'NLTK', 'NumPy'],
     repo: GH + 'movie-reviews-sentiment-analysis'
   }
 ];
@@ -133,8 +133,8 @@ const leadership = [
     role: 'Undergraduate Researcher',
     org: 'SJSU · with Prof. Maryam Khazaei',
     when: 'Aug 2024 — May 2025',
-    points: ['First-author paper accepted at IEEE ETECOM 2026', 'Four rule-based sentiment classifiers on 25,000 IMDb reviews: 72.40% → 73.72% accuracy (p < 0.001)'],
-    link: { href: GH + 'movie-reviews-sentiment-analysis', label: 'Code' }
+    points: ['First author of “Evaluating Linguistic Heuristics in Lexicon-Based Movie Review Sentiment Analysis”, accepted at IEEE ETECOM 2026', 'Built 4 rule-based classifiers on 25,000 IMDb reviews, raising accuracy from 72.40% to 73.72% (McNemar, p < 0.001)'],
+    link: { href: GH + 'movie-reviews-sentiment-analysis', label: 'Source Code' }
   }
 ];
 
