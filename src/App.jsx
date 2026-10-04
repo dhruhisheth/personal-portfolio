@@ -1,20 +1,6 @@
 // Kept in sync with the résumés: same titles, dates, and numbers.
 const experience = [
   {
-    role: 'Co-founder · Product Manager & Frontend Developer',
-    org: 'REFRM',
-    when: 'May 2026 — Present',
-    where: 'Remote',
-    summary: 'Co-building VERA, an AI fashion-discovery platform, while shipping client product work from scope through frontend.',
-    highlights: [
-      'Building VERA, which ingests a brand’s full catalog to power conversational search, outfit pairing, and size/fit guidance',
-      'Owned Phase 1 scope for Bado, a 4-product cafe delivery platform: 189 features defined, 22 deferred to Phase 2 for a lean v1',
-      'Drove an unserved-demand capture feature that logs out-of-zone orders into a locality dataset for franchise planning',
-      'Ran the client mockup walkthrough and sign-off, then built the cross-platform customer frontend'
-    ],
-    details: ['Product scope', 'Frontend development', 'Fashion AI']
-  },
-  {
     role: 'Product & Outreach Associate',
     org: 'Girls Girls Club',
     when: 'Aug 2026 — Present',
@@ -84,18 +70,23 @@ const leadership = [
     role: 'Undergraduate Researcher',
     org: 'SJSU College of Engineering',
     when: 'Aug 2024 — May 2025',
-    copy: 'Built an NLP pipeline classifying 25,000 IMDB reviews at 72% accuracy, benchmarked against ML baselines and BERT.'
+    copy: 'First-author paper accepted at IEEE ETECOM 2026: four rule-based sentiment classifiers on 25,000 IMDb reviews, raising accuracy from 72.40% to 73.72%.'
   }
 ];
 
 const projects = [
   {
-    kicker: 'Fashion tech · Current',
-    title: 'VERA / REFRM',
-    copy: 'An AI fashion-discovery platform that ingests brand catalogs to power conversational search, outfit pairing, and size/fit guidance.',
-    tech: 'Product strategy · AI · Semantic search · Frontend',
-    href: 'https://github.com/dhruhisheth/refrm-landing',
-    cta: 'View landing page code'
+    kicker: 'In development · B2B AI',
+    title: 'VERA',
+    featured: true,
+    copy: 'A B2B AI platform for fashion brands. VERA ingests a brand’s full product catalog and turns it into an intelligent discovery layer for the brand’s own storefront.',
+    points: [
+      'Conversational and visual search, so shoppers can describe or show what they want instead of guessing filters',
+      'Outfit pairing and recommendations built from the brand’s own catalog',
+      'Size and fit guidance to help shoppers choose with confidence',
+      'Demand analytics over catalog and search data, showing brands what their customers are looking for'
+    ],
+    tech: 'Python · LLMs · Semantic search · Catalog ingestion'
   },
   {
     kicker: 'Data product',
@@ -106,12 +97,10 @@ const projects = [
     cta: 'Open live site'
   },
   {
-    kicker: 'Fashion AI',
-    title: 'LangGraph Fashion Stylist',
-    copy: 'An AI stylist that turns natural-language prompts into curated outfits, improving stylistic relevance by 25% and engagement by 30%.',
-    tech: 'Python · FastAPI · LangGraph · Streamlit',
-    href: 'https://github.com/dhruhisheth/langgraph-ai-agent',
-    cta: 'View source'
+    kicker: 'Research · IEEE ETECOM 2026',
+    title: 'Linguistic Heuristics in Sentiment Analysis',
+    copy: 'First-author paper (accepted) measuring how much each rule adds to an interpretable sentiment classifier: accuracy rose from 72.40% to 73.72% on 25,000 IMDb reviews (McNemar, p < 0.001).',
+    tech: 'Python · NLTK · NumPy · Statistical testing'
   },
   {
     kicker: 'Backend engineering',
@@ -119,6 +108,14 @@ const projects = [
     copy: 'A microservices REST API for recipe search and meal planning over 10K+ recipes, deployed with CI/CD at 99.9% uptime.',
     tech: 'Java · Spring Boot · MongoDB · AWS',
     href: 'https://github.com/dhruhisheth/meal-mate',
+    cta: 'View source'
+  },
+  {
+    kicker: 'AI agent',
+    title: 'LangGraph Stylist Agent',
+    copy: 'An AI agent that turns natural-language prompts into curated outfit recommendations, improving relevance by 25% and engagement by 30%.',
+    tech: 'Python · FastAPI · LangGraph · Streamlit',
+    href: 'https://github.com/dhruhisheth/langgraph-ai-agent',
     cta: 'View source'
   }
 ];
@@ -149,9 +146,9 @@ function App() {
       <main id="top">
         <section className="hero section-pad">
           <div className="eyebrow">SJSU Computer Science · May 2027</div>
-          <h1>I build where <em>fashion</em>, data, and product meet.</h1>
+          <h1>I build <em>data</em>, AI, and software that people rely on.</h1>
           <div className="hero-grid">
-            <p className="lede">I’m Dhruhi Sheth — a computer science student, product builder, and engineer interested in technology that shapes how people discover, shop, decide, and interact.</p>
+            <p className="lede">I’m Dhruhi Sheth — a computer science student and engineer working across data engineering, AI, software development, and product.</p>
             <div className="hero-side">
               <p>NYC is my first choice. I’m also open to relocating anywhere in the U.S.</p>
               <div className="hero-actions">
@@ -161,37 +158,42 @@ function App() {
             </div>
           </div>
           <div className="signal-row" aria-label="Career focus">
-            <span>Fashion & beauty tech</span><span>Data & analytics</span><span>Software engineering</span><span>Product</span>
+            <span>Software engineering</span><span>Data engineering & analytics</span><span>AI & machine learning</span><span>Product</span>
           </div>
         </section>
 
         <section className="statement-band">
-          <p>Currently co-building <strong>VERA at REFRM</strong>, an AI fashion-discovery product.</p>
+          <p>Research accepted at <strong>IEEE ETECOM 2026</strong> · Currently building <strong>VERA</strong></p>
         </section>
 
         <section id="work" className="section-pad">
           <div className="section-head">
-            <div><div className="eyebrow">01 · Selected work</div><h2>Technical depth, consumer instinct.</h2></div>
-            <p>Projects chosen to show the overlap between engineering, data, AI, and consumer product thinking.</p>
+            <div><div className="eyebrow">01 · Selected work</div><h2>Built end to end.</h2></div>
+            <p>Products, systems, and research across software engineering, data, and AI.</p>
           </div>
           <div className="project-grid">
-            {projects.map((p, i) => (
-              <a className="project-card" href={p.href} target="_blank" rel="noreferrer" key={p.title}>
-                <div className="project-index">0{i + 1}</div>
-                <div className="project-kicker">{p.kicker}</div>
-                <h3>{p.title}</h3>
-                <p>{p.copy}</p>
-                <div className="project-tech">{p.tech}</div>
-                <span className="project-link">{p.cta} ↗</span>
-              </a>
-            ))}
+            {projects.map((p, i) => {
+              const Card = p.href ? 'a' : 'article';
+              const linkProps = p.href ? { href: p.href, target: '_blank', rel: 'noreferrer' } : {};
+              return (
+                <Card className={'project-card' + (p.featured ? ' featured' : '')} key={p.title} {...linkProps}>
+                  <div className="project-index">0{i + 1}</div>
+                  <div className="project-kicker">{p.kicker}</div>
+                  <h3>{p.title}</h3>
+                  <p>{p.copy}</p>
+                  {p.points && <ul className="project-points">{p.points.map(x => <li key={x}>{x}</li>)}</ul>}
+                  <div className="project-tech">{p.tech}</div>
+                  {p.href && <span className="project-link">{p.cta} ↗</span>}
+                </Card>
+              );
+            })}
           </div>
         </section>
 
         <section id="experience" className="section-pad contrast">
           <div className="section-head light">
             <div><div className="eyebrow">02 · Experience</div><h2>From pipelines to product.</h2></div>
-            <p>Hands-on work across data engineering, AI, software, product execution, and fashion-tech.</p>
+            <p>Hands-on work across data engineering, AI, software development, and product execution.</p>
           </div>
           <div className="timeline">
             {experience.map((item) => (
@@ -227,11 +229,11 @@ function App() {
           <div className="about-grid">
             <div>
               <div className="eyebrow">03 · About</div>
-              <h2>A technical foundation with a consumer lens.</h2>
+              <h2>Strong foundations, real-world range.</h2>
             </div>
             <div className="about-copy">
               <p>I study Computer Science at San José State University and graduate in May 2027. My experience spans data engineering, AI, software development, and product work.</p>
-              <p>I’m especially drawn to fashion, beauty, luxury, retail, and e-commerce technology — roles where engineering and analytics directly shape customer experience and business decisions.</p>
+              <p>I’m drawn to roles where engineering and analytics directly shape user experience and business decisions, whether that means building reliable data pipelines, shipping AI features, or scoping a product with its users.</p>
               <div className="education-card">
                 <span>San José State University</span>
                 <strong>B.S. Computer Science · GPA 3.78</strong>
@@ -248,7 +250,7 @@ function App() {
         <section className="contact section-pad">
           <div className="eyebrow">04 · Contact</div>
           <h2>Let’s build something people actually want to use.</h2>
-          <p>Open to May 2027 full-time opportunities across fashion-tech, data, analytics, software engineering, and product.</p>
+          <p>Open to May 2027 full-time opportunities in software engineering, data, AI, and product.</p>
           <div className="contact-links">
             <a href="mailto:shethdhruhi05@gmail.com">shethdhruhi05@gmail.com</a>
             <a href="https://www.linkedin.com/in/dhruhisheth" target="_blank" rel="noreferrer">LinkedIn ↗</a>
