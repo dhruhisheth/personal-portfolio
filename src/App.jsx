@@ -18,7 +18,7 @@ const experience = [
     role: 'Product & Outreach Associate',
     org: 'Girls Girls Club',
     when: 'Aug 2026 — Present',
-    where: 'New York, NY · Unpaid internship',
+    where: 'New York, NY · Remote · Unpaid internship',
     summary: 'Supporting app development with the founding team and leading member, partner, and brand outreach.',
     highlights: [
       'Support end-to-end development of the club’s app, turning community needs into launch features',
