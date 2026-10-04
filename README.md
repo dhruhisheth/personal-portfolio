@@ -1,39 +1,18 @@
-# 💼 Dhruhi Sheth — Personal Portfolio
+# Dhruhi Sheth — Portfolio
 
-This is my personal portfolio website built using **Vite**, **React**, and **TailwindCSS**, hosted on **Vercel**. It highlights my projects, skills, experience, and resume — all in one place.
+Recruiter-facing portfolio for Dhruhi Sheth, SJSU Computer Science class of 2027.
 
-### 🚀 Live Site
-👉 [Visit Portfolio](https://dhruhisheth-portfolio.vercel.app)
+## Run locally
 
----
+```bash
+npm install
+npm run dev
+```
 
-## 🛠️ Tech Stack
+## Production build
 
-- **Frontend**: React, Vite, Tailwind CSS
-- **Deployment**: Vercel
+```bash
+npm run build
+```
 
----
-
-## 📁 Features
-
-- Clean, responsive design with light and dark themes
-- Experience, projects, skills, education, and contact sections
-- Resume download and social links
-
-## ✏️ Updating content
-
-All copy (experience, projects, skills, honors) lives in `src/data/content.js`.
-To update the downloadable resume, replace `public/Dhruhi_Sheth_Resume.pdf`.
-
----
-
-## 🧑‍💻 Author
-
-**Dhruhi Sheth**  
-📫 [LinkedIn](https://linkedin.com/in/dhruhisheth) | 📧 shethdhruhi05@gmail.com
-
----
-
-## 📝 License
-
-This project is open-source and free to use under the [MIT License](LICENSE).
+Deploy the repository on Vercel with framework preset **Vite**. `vercel.json` includes an SPA fallback so direct links work in incognito and on refresh.
