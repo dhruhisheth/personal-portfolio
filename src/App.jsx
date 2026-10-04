@@ -1,26 +1,43 @@
+// Kept in sync with the résumés: same titles, dates, and numbers.
 const experience = [
   {
     role: 'Co-founder · Product Manager & Frontend Developer',
     org: 'REFRM',
     when: 'May 2026 — Present',
-    where: 'Remote / India',
-    summary: 'Co-building VERA, an AI fashion-discovery product, while shipping client-facing product work from scope through frontend implementation.',
-    details: ['Product scope & requirements', 'Frontend development', 'Fashion discovery & AI']
+    where: 'Remote',
+    summary: 'Co-building VERA, an AI fashion-discovery platform, while shipping client product work from scope through frontend.',
+    highlights: [
+      'Building VERA, which ingests a brand’s full catalog to power conversational search, outfit pairing, and size/fit guidance',
+      'Owned Phase 1 scope for Bado, a 4-product cafe delivery platform: 189 features defined, 22 deferred to Phase 2 for a lean v1',
+      'Drove an unserved-demand capture feature that logs out-of-zone orders into a locality dataset for franchise planning',
+      'Ran the client mockup walkthrough and sign-off, then built the cross-platform customer frontend'
+    ],
+    details: ['Product scope', 'Frontend development', 'Fashion AI']
   },
   {
     role: 'Product & Outreach Associate',
     org: 'Girls Girls Club',
     when: 'Aug 2026 — Present',
-    where: 'Unpaid internship',
-    summary: 'Supporting app development with the founding team, coordinating partner and brand outreach, and keeping launch work organized.',
-    details: ['Product execution', 'Partner outreach', 'Brand communication']
+    where: 'New York, NY · Remote · Unpaid internship',
+    summary: 'Supporting app development with the founding team and leading member, partner, and brand outreach.',
+    highlights: [
+      'Support end-to-end development of the club’s app, turning community needs into launch features',
+      'Lead outreach to members, partners, and brands, managing daily communication and follow-ups',
+      'Design branded Canva marketing assets: social posts, event flyers, and promotional visuals'
+    ],
+    details: ['Product execution', 'Partner outreach', 'Canva']
   },
   {
     role: 'Data Engineering Intern',
     org: 'RAAPID Inc.',
     when: 'May 2026 — Jul 2026',
-    where: 'Remote',
-    summary: 'Built a clinical ingestion workflow in Microsoft Fabric / OneLake with validation, deduplication, manifests, retry logic, and structured error handling.',
+    where: 'Louisville, KY · Remote',
+    summary: 'Built a clinical data-ingestion pipeline on Microsoft Fabric / OneLake using Medallion Architecture.',
+    highlights: [
+      'Ingested 5 hospital document types into a Bronze layer with zero data loss',
+      'Engineered MD5 deduplication, size-based batching, and JSON manifests for idempotent, auditable daily runs',
+      'Implemented fault-tolerant uploads (3x retry, size verification) and a dead-letter system for corrupted files'
+    ],
     details: ['Python', 'Microsoft Fabric', 'OneLake', 'Medallion Architecture']
   },
   {
@@ -28,7 +45,12 @@ const experience = [
     org: 'Lucrisma Inc.',
     when: 'May 2025 — Jul 2025',
     where: 'Remote',
-    summary: 'Built an AI-powered financial assistant and API integrations for portfolio data using Python, FastAPI, LangGraph, and LangChain.',
+    summary: 'Built an AI-powered financial assistant and portfolio-data APIs.',
+    highlights: [
+      'Built an AI financial assistant (LangGraph, LangChain, FastAPI), reducing support requests by 30/week',
+      'Designed REST APIs aggregating 12,000+ banks and 300+ crypto wallets, saving the company $4,000 annually',
+      'Optimized API performance for 1,000+ users: 40% faster sync and 35% lower latency'
+    ],
     details: ['Python', 'FastAPI', 'LangGraph', 'REST APIs']
   },
   {
@@ -36,8 +58,33 @@ const experience = [
     org: 'ContCentric IT Services',
     when: 'May 2024 — Aug 2024',
     where: 'Delaware, DE',
-    summary: 'Worked on computer-vision data pipelines, YOLOv8 model improvement, and automated geospatial PDF reporting.',
+    summary: 'Worked on computer-vision data pipelines and automated geospatial reporting.',
+    highlights: [
+      'Annotated 8,000+ drone images and fine-tuned YOLOv8, driving a ~20% uplift in hazard-detection accuracy',
+      'Built an async Flask API automating geospatial PDF reports, reducing processing time by ~15%'
+    ],
     details: ['Python', 'YOLOv8', 'Flask', 'Computer Vision']
+  }
+];
+
+const leadership = [
+  {
+    role: 'Peer Academic Success Coach',
+    org: 'San José State University',
+    when: 'Aug 2026 — Present',
+    copy: 'Coach students on coursework, study strategies, and academic skills to help them meet their academic goals.'
+  },
+  {
+    role: 'Mentorship Director',
+    org: 'Society of Women Engineers, SJSU',
+    when: 'Aug 2025 — Present',
+    copy: 'Run the mentorship program for 50+ students; streamlined logistics and content, boosting participation by 20%.'
+  },
+  {
+    role: 'Undergraduate Researcher',
+    org: 'SJSU College of Engineering',
+    when: 'Aug 2024 — May 2025',
+    copy: 'Built an NLP pipeline classifying 25,000 IMDB reviews at 72% accuracy, benchmarked against ML baselines and BERT.'
   }
 ];
 
@@ -45,30 +92,34 @@ const projects = [
   {
     kicker: 'Fashion tech · Current',
     title: 'VERA / REFRM',
-    copy: 'An AI fashion-discovery platform designed to ingest brand catalogs and support conversational search, outfit pairing, and product discovery.',
+    copy: 'An AI fashion-discovery platform that ingests brand catalogs to power conversational search, outfit pairing, and size/fit guidance.',
     tech: 'Product strategy · AI · Semantic search · Frontend',
-    href: 'https://github.com/dhruhisheth'
+    href: 'https://github.com/dhruhisheth/refrm-landing',
+    cta: 'View landing page code'
   },
   {
     kicker: 'Data product',
     title: 'Warehouse AI',
-    copy: 'An AI-assisted inventory system with auditable changes, human review before commits, access controls, and version history.',
+    copy: 'An AI-assisted inventory system with an auditable lock → mutate → audit → backup → upload pipeline, preview-before-commit imports, and version history.',
     tech: 'FastAPI · React · TypeScript · Redis',
-    href: 'https://github.com/dhruhisheth'
+    href: 'https://warehouse-ai.vercel.app',
+    cta: 'Open live site'
   },
   {
     kicker: 'Fashion AI',
     title: 'LangGraph Fashion Stylist',
-    copy: 'A fashion-focused AI agent that turns natural-language style prompts into curated outfit recommendations through an interactive interface.',
+    copy: 'An AI stylist that turns natural-language prompts into curated outfits, improving stylistic relevance by 25% and engagement by 30%.',
     tech: 'Python · FastAPI · LangGraph · Streamlit',
-    href: 'https://github.com/dhruhisheth/langgraph-ai-agent'
+    href: 'https://github.com/dhruhisheth/langgraph-ai-agent',
+    cta: 'View source'
   },
   {
     kicker: 'Backend engineering',
     title: 'MealMate',
-    copy: 'A recipe search and meal-planning backend built around REST APIs, MongoDB aggregation, testing, and cloud deployment.',
+    copy: 'A microservices REST API for recipe search and meal planning over 10K+ recipes, deployed with CI/CD at 99.9% uptime.',
     tech: 'Java · Spring Boot · MongoDB · AWS',
-    href: 'https://github.com/dhruhisheth'
+    href: 'https://github.com/dhruhisheth/meal-mate',
+    cta: 'View source'
   }
 ];
 
@@ -131,7 +182,7 @@ function App() {
                 <h3>{p.title}</h3>
                 <p>{p.copy}</p>
                 <div className="project-tech">{p.tech}</div>
-                <span className="project-link">Open project ↗</span>
+                <span className="project-link">{p.cta} ↗</span>
               </a>
             ))}
           </div>
@@ -150,8 +201,23 @@ function App() {
                   <h3>{item.role}</h3>
                   <div className="org">{item.org}</div>
                   <p>{item.summary}</p>
+                  <ul className="highlights">{item.highlights.map(x => <li key={x}>{x}</li>)}</ul>
                   <div className="chips">{item.details.map(x => <span key={x}>{x}</span>)}</div>
                 </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="section-head light leadership-head">
+            <div><div className="eyebrow">Leadership & research</div><h3>Beyond the job title.</h3></div>
+          </div>
+          <div className="leadership-grid">
+            {leadership.map((item) => (
+              <article className="leadership-card" key={item.role}>
+                <span>{item.when}</span>
+                <h4>{item.role}</h4>
+                <div className="org">{item.org}</div>
+                <p>{item.copy}</p>
               </article>
             ))}
           </div>
